@@ -42,14 +42,14 @@ ipcRenderer.on(IPCFileEvents.SCAN_FILES_COMPLETED, (_, data: FileData[]) => {
   files.value = data
 })
 
-ipcRenderer.on(IPCFileEvents.SCAN_FILES_CANCELED, (_) => {
+ipcRenderer.on(IPCFileEvents.SCAN_FILES_CANCELED, () => {
   proxy?.$Notice?.info({
     title: '提示',
     desc: '取消扫描！'
   })
 })
 
-function scanfile() {
+function scanfile(): void {
   ipcRenderer.send(IPCFileEvents.SCAN_FILES_IN_DIRECTORY)
 }
 </script>

@@ -42,18 +42,18 @@ const modal = ref(false)
 const operation = ref('minify')
 const remember = ref(false)
 
-function confirm() {
+function confirm(): void {
   ipcRenderer.send(IPCWindowEvents.WINDOW_OPERATION, operation.value)
   if (remember.value) {
     ipcRenderer.send(IpcDBEvents.SET_DB, 'system.closeBehavior', operation.value)
   }
 }
 
-function toggleAsideMenu() {
+function toggleAsideMenu(): void {
   bus.emit('toggle-menu')
 }
 
-async function operateWindow(type: string) {
+async function operateWindow(type: string): Promise<void> {
   if (type === 'inquire') {
     const behavior = await ipcRenderer.invoke(IpcDBEvents.GET_DB, 'system.closeBehavior', 'inquire')
     if (behavior === 'inquire') {
@@ -68,7 +68,7 @@ async function operateWindow(type: string) {
   }
 }
 
-function toggleTheme() {
+function toggleTheme(): void {
   const body = document.body
   const theme = body.getAttribute('data-theme')
   const newTheme = theme === 'light' ? 'dark' : 'light'

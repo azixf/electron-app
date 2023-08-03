@@ -31,7 +31,7 @@ export const installTray = (icon: Electron.NativeImage, win: BrowserWindow): voi
       label: '重启应用',
       type: 'normal',
       click: (): void => {
-        app.relaunch()
+        app.relaunch({ args: process.argv.slice(1).concat(['--relaunch']) })
         app.exit(0)
       }
     },

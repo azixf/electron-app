@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LayoutHeader from '@/components/layouts/header.vue'
-import LayoutAside from '@/components/layouts/aside.vue'
+const LayoutHeader = defineAsyncComponent(() => import('@/components/layouts/header.vue'))
+const LayoutAside = defineAsyncComponent(() => import('@/components/layouts/aside.vue'))
 </script>
 
 <template>
@@ -57,7 +57,7 @@ import LayoutAside from '@/components/layouts/aside.vue'
 
   .content {
     -webkit-app-region: no-drag;
-    height: calc(100% - 24px - 2 * $padding-small);
+    height: calc(100% - 24px);
     padding-right: $padding-small;
     overflow: auto;
   }

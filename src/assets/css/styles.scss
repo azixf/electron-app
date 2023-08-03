@@ -10,11 +10,6 @@ body {
   &::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    display: none;
-  }
-
-  &:hover::-webkit-scrollbar {
-    display: block;
   }
 
   &::-webkit-scrollbar-thumb {
@@ -38,4 +33,51 @@ body,
   width: 100vw;
   height: 100vh;
   font-size: 16px;
+}
+
+// 自定义modal样式
+.ivu-modal-content {
+  @include themeify {
+    background-color: themed('color-modal-bg');
+    color: themed('color-modal-text');
+  }
+
+  .ivu-modal-header,
+  .ivu-modal-footer {
+    @include themeify {
+      border-color: themed('color-modal-border');
+    }
+  }
+
+  .ivu-modal-header-inner {
+    @include themeify {
+      color: themed('color-modal-text');
+    }
+  }
+
+  .ivu-icon:hover {
+    @include themeify {
+      color: themed('color-modal-close-icon');
+    }
+  }
+
+  .ivu-btn-text {
+    @include themeify {
+      background-color: themed('color-modal-cancel-button-bg');
+      color: themed('color-modal-cancel-button-text');
+      &:hover {
+        background-color: themed('color-modal-cancel-button-bg_hover');
+      }
+    }
+  }
+}
+
+.ivu-card {
+  @include themeify {
+    background-color: themed('color-card-bg');
+    border-color: themed('color-card-border');
+    &:hover {
+      box-shadow: themed('color-card-shadow');
+    }
+  }
 }
